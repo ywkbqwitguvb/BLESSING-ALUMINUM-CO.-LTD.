@@ -197,7 +197,7 @@ body {
 
 /* Services Section */
 .services {
-    padding: 80px 0;
+    padding: 80px 0 100px;
     background: var(--light-bg);
 }
 
@@ -219,22 +219,27 @@ body {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    align-items: stretch;
 }
 
 .service-card {
     background: var(--text-light);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    padding: 30px 28px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: none;
+    border: 1.5px solid rgba(34, 47, 62, 0.06);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(28, 44, 61, 0.08);
 }
 
 .service-icon {
@@ -242,6 +247,32 @@ body {
     margin-bottom: 15px;
     display: inline-block;
     animation: bounce 2s infinite;
+}
+
+.service-badge {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(231, 76, 60, 0.08);
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+}
+
+.service-card h3 {
+    margin: 6px 0 8px;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+}
+
+.service-card p {
+    color: #6d7b83;
+    line-height: 1.7;
+    font-size: 0.98rem;
+    margin-top: 6px;
 }
 
 .service-card h3 {
@@ -455,7 +486,7 @@ body {
     }
 
     .services-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .section-header h2 {
@@ -492,5 +523,9 @@ body {
 
     .logo-text p {
         font-size: 0.6rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
     }
 }
