@@ -140,7 +140,7 @@ const observer = new IntersectionObserver(function (entries) {
 }, observerOptions);
 
 // Apply observer to service cards and other elements
-document.querySelectorAll('.service-card, .info-card').forEach(el => {
+document.querySelectorAll('.service-card, .info-card, .project-card').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
 });
