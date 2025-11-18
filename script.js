@@ -156,13 +156,33 @@ function setupMobileMenu() {
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function () {
     setupMobileMenu();
+   
+        // WhatsApp send handler for contact form
+        const sendWhatsapp = document.getElementById('sendWhatsapp');
+        if (sendWhatsapp) {
+            sendWhatsapp.addEventListener('click', function () {
+                const name = document.getElementById('cf-name').value.trim();
+                const email = document.getElementById('cf-email').value.trim();
+                const message = document.getElementById('cf-message').value.trim();
+
+                if (!name || !email || !message) {
+                    showNotification('Please fill in name, email and message before sending.', 'error');
+                    return;
+                }
+
+                const waNumber = '2348037344440';
+                const text = `Name: ${name}%0AEmail: ${email}%0AMessage: ${encodeURIComponent(message)}`;
+                const url = `https://wa.me/${waNumber}?text=${text}`;
+                window.open(url, '_blank');
+            });
+        }
 });
 
 // Call Quote CTA
 const callBtn = document.querySelector('.btn-secondary');
 if (callBtn) {
     callBtn.addEventListener('click', function () {
-        window.location.href = 'tel:+2348037344440';
+        window.location.href = 'tel:+2348061618862';
     });
 }
 

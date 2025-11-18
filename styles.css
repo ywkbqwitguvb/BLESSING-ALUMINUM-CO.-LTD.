@@ -520,6 +520,120 @@ body {
 }
 
 /* Footer */
+.contact-hero {
+    padding: 60px 0 80px;
+    background: linear-gradient(135deg, #d83a47 0%, #c83b48 40%, #b93a45 100%);
+    color: #fff;
+}
+
+.contact-hero h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+}
+
+.contact-sub {
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 28px;
+}
+
+.contact-topcards {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    padding: 18px 20px;
+    border-radius: 6px;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.contact-card h4 {
+    margin: 8px 0 6px;
+    font-size: 1rem;
+}
+
+.contact-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.contact-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.contact-form-card {
+    background: white;
+    padding: 22px;
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    color: #2c3e50;
+}
+
+.contact-form-card h3 {
+    margin: 0 0 12px;
+}
+
+.contact-form-card label {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #4b6572;
+}
+
+.contact-form-card input,
+.contact-form-card textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e6eef1;
+    border-radius: 4px;
+    margin-top: 6px;
+    font-family: inherit;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.office-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.office-card {
+    background: white;
+    padding: 18px;
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    color: #2c3e50;
+}
+
+.office-card h4 {
+    margin: 0 0 8px;
+}
+
+/* Footer */
 .footer {
     background: var(--dark-bg);
     color: var(--text-light);
