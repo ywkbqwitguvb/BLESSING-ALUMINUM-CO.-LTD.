@@ -74,6 +74,50 @@ body {
     gap: 30px;
 }
 
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 120;
+    margin-left: 10px;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 120;
+    margin-left: 10px;
+}
+.hamburger .bar {
+    width: 26px;
+    height: 3px;
+    background: var(--text-dark);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 .nav-links a {
     color: var(--text-light);
     text-decoration: none;
@@ -679,9 +723,45 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
     .nav-links {
-        gap: 15px;
-        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: -100vw;
+        background: var(--dark-bg);
+        width: 200px;
+        gap: 0;
+        font-size: 1rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        border-radius: 0 0 10px 10px;
+        padding: 18px 0;
+        transition: right 0.3s cubic-bezier(.4,0,.2,1);
+        z-index: 110;
+    }
+    .nav-links.open {
+        right: 0;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: left;
+        padding: 10px 24px;
+    }
+    .nav-links a {
+        color: var(--text-light);
+        width: 100%;
+        display: block;
+    }
+    .quote-btn {
+        margin-left: 0;
+    }
+    .nav-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
     }
 
     .logo-text h1 {

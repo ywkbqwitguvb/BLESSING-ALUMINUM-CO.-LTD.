@@ -14,22 +14,22 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
-        // Get form values
-        const name = this.querySelector('input[placeholder="Your Name"]').value;
-        const email = this.querySelector('input[placeholder="Your Email"]').value;
-        const phone = this.querySelector('input[placeholder="Phone Number"]').value;
-        const message = this.querySelector('textarea').value;
+
+        // Get form values using IDs
+        const name = document.getElementById('cf-name').value.trim();
+        const phone = document.getElementById('cf-phone').value.trim();
+        const email = document.getElementById('cf-email').value.trim();
+        const message = document.getElementById('cf-message').value.trim();
 
         // Validate form
-        if (name && email && phone && message) {
+        if (name && phone && email && message) {
             // Show success message
             showNotification('Message sent successfully! We will contact you soon.', 'success');
-            
+
             // Reset form
             this.reset();
         } else {
-            showNotification('Please fill in all fields.', 'error');
+            showNotification('Please fill in all required fields.', 'error');
         }
     });
 }
@@ -145,12 +145,27 @@ document.querySelectorAll('.service-card, .info-card, .project-card').forEach(el
     observer.observe(el);
 });
 
-// Mobile Menu Toggle (if needed for responsive design)
+// Mobile Menu Toggle
 function setupMobileMenu() {
-    const nav = document.querySelector('.nav-links');
-    if (window.innerWidth <= 768) {
-        // Could add hamburger menu functionality here
-    }
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.querySelector('.nav-links');
+    if (!hamburger || !navLinks) return;
+
+    hamburger.addEventListener('click', function () {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+    });
+
+    // Close menu on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
 }
 
 // Initialize on load
@@ -182,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const callBtn = document.querySelector('.btn-secondary');
 if (callBtn) {
     callBtn.addEventListener('click', function () {
-        window.location.href = 'tel:+2348061618862';
+        window.location.href = 'tel:+2348037344440';
     });
 }
 
