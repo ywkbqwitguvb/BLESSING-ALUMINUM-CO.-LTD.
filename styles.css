@@ -774,12 +774,66 @@ body {
 .footer {
     background: var(--dark-bg);
     color: var(--text-light);
-    text-align: center;
-    padding: 30px 0;
+    padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.footer p {
-    margin: 10px 0;
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+}
+
+.footer-info h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.footer-tagline {
+    margin: 2px 0 0;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-copyright {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.footer-director {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* Footer responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-right {
+        text-align: center;
+    }
 }
 
 /* Animations */
@@ -899,6 +953,34 @@ body {
     }
 }
 
+/* Contact section responsive tweaks */
+@media (max-width: 768px) {
+    .contact-topcards {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .contact-card {
+        min-width: auto;
+        width: 100%;
+        max-width: 520px;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .office-cards {
+        flex-direction: column;
+    }
+    .form-actions {
+        flex-direction: column;
+    }
+    .form-actions .btn {
+        width: 100%;
+    }
+    .contact-hero h2 { font-size: 1.8rem; }
+}
+
 @media (max-width: 600px) {
     .nav-content {
         flex-direction: column;
@@ -940,6 +1022,33 @@ body {
 
     .cta-content h2 {
         font-size: 1.3rem;
+    }
+
+    /* Contact adjustments for very small screens */
+    .contact-hero {
+        padding: 36px 12px 48px;
+    }
+    .contact-topcards {
+        gap: 10px;
+    }
+    .contact-card {
+        padding: 12px 14px;
+        min-width: auto;
+    }
+    .contact-grid {
+        gap: 12px;
+    }
+    .contact-form-card {
+        padding: 16px;
+    }
+    .office-card {
+        padding: 12px;
+    }
+    .form-actions {
+        gap: 10px;
+    }
+    .form-actions .btn {
+        width: 100%;
     }
 }
 
