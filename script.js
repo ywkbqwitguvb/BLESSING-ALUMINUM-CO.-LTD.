@@ -156,6 +156,15 @@ function setupMobileMenu() {
         hamburger.setAttribute('aria-expanded', !expanded);
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('open');
+        // show overlay
+        const overlay = document.getElementById('navOverlay');
+        if (overlay) overlay.classList.toggle('active');
+        // when opening, set focus trap
+        if (navLinks.classList.contains('open')) {
+            trapFocus(navLinks);
+        } else {
+            releaseFocus();
+        }
     });
 
     // Close menu on link click (mobile)
@@ -164,8 +173,79 @@ function setupMobileMenu() {
             hamburger.classList.remove('active');
             navLinks.classList.remove('open');
             hamburger.setAttribute('aria-expanded', 'false');
+            const overlay = document.getElementById('navOverlay');
+            if (overlay) overlay.classList.remove('active');
+            releaseFocus();
         });
     });
+
+    // close when clicking overlay
+    const overlay = document.getElementById('navOverlay');
+    if (overlay) {
+        overlay.addEventListener('click', function () {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+            overlay.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            releaseFocus();
+        });
+    }
+}
+
+// Focus trap helpers
+let previousFocus = null;
+function trapFocus(container) {
+    previousFocus = document.activeElement;
+    const focusable = container.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length) focusable[0].focus();
+
+    function handleKey(e) {
+        if (e.key === 'Escape') {
+            // close menu
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.getElementById('navOverlay');
+            if (hamburger) hamburger.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('open');
+            if (overlay) overlay.classList.remove('active');
+            if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+            releaseFocus();
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusableElements = Array.from(container.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])'))
+                .filter(el => !el.hasAttribute('disabled'));
+            if (focusableElements.length === 0) return;
+            const first = focusableElements[0];
+            const last = focusableElements[focusableElements.length - 1];
+
+            if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            }
+        }
+    }
+
+    document.addEventListener('keydown', handleKey);
+    // store handler so we can remove it later
+    container._trapHandler = handleKey;
+}
+
+function releaseFocus() {
+    if (previousFocus) previousFocus.focus();
+    // remove key handler from document
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks && navLinks._trapHandler) {
+        document.removeEventListener('keydown', navLinks._trapHandler);
+        delete navLinks._trapHandler;
+    }
+    previousFocus = null;
 }
 
 // Initialize on load

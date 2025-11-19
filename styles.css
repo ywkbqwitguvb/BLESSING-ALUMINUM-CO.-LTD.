@@ -118,6 +118,14 @@ body {
     transform: translateY(-7px) rotate(-45deg);
 }
 
+/* SVG hamburger lines (use currentColor for easy theming) */
+.hamburger svg { display: block; color: var(--text-light); }
+.hamburger .line { transform-origin: 13px 9px; transition: transform 0.28s ease, opacity 0.28s ease; }
+.hamburger .line1, .hamburger .line2, .hamburger .line3 { fill: currentColor; }
+.hamburger.active .line1 { transform: translateY(8px) rotate(45deg); }
+.hamburger.active .line2 { opacity: 0; }
+.hamburger.active .line3 { transform: translateY(-8px) rotate(-45deg); }
+
 .nav-links a {
     color: var(--text-light);
     text-decoration: none;
@@ -127,6 +135,43 @@ body {
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+/* Skip link (accessible) */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 16px;
+    top: 12px;
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+    background: var(--text-light);
+    color: var(--text-dark);
+    border-radius: 6px;
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Overlay behind mobile menu */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    z-index: 105;
+}
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .quote-btn {
