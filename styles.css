@@ -4,6 +4,93 @@
     box-sizing: border-box;
 }
 
+/* Navigation */
+.navbar {
+    background: var(--dark-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a[aria-current="page"] {
+    color: var(--primary-color);
+    outline: none;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 120;
+    margin-left: 10px;
+}
+
+.hamburger svg {
+    display: block;
+    color: var(--text-light);
+}
+
+.hamburger .line {
+    transform-origin: 13px 9px;
+    transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.hamburger.active .line1 {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .line2 {
+    opacity: 0;
+}
+
+.hamburger.active .line3 {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
 :root {
     --primary-color: #e74c3c;
     --dark-bg: #2c3e50;
@@ -27,114 +114,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* Navigation Bar */
-.navbar {
-    background: var(--dark-bg);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--text-light);
-}
-
-.logo-icon {
-    font-size: 2.5rem;
-}
-
-.logo-text h1 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.logo-text p {
-    font-size: 0.8rem;
-    color: var(--primary-color);
-    font-style: italic;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.hamburger-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 120;
-    margin-left: 10px;
-}
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 120;
-    margin-left: 10px;
-}
-.hamburger .bar {
-    width: 26px;
-    height: 3px;
-    background: var(--text-dark);
-    margin: 4px 0;
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(.4,0,.2,1);
-}
-.hamburger.active .bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active .bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-/* SVG hamburger lines (use currentColor for easy theming) */
-.hamburger svg { display: block; color: var(--text-light); }
-.hamburger .line { transform-origin: 13px 9px; transition: transform 0.28s ease, opacity 0.28s ease; }
-.hamburger .line1, .hamburger .line2, .hamburger .line3 { fill: currentColor; }
-.hamburger.active .line1 { transform: translateY(8px) rotate(45deg); }
-.hamburger.active .line2 { opacity: 0; }
-.hamburger.active .line3 { transform: translateY(-8px) rotate(-45deg); }
-
-.nav-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
 }
 
 /* Skip link (accessible) */
@@ -163,11 +142,12 @@ body {
 .nav-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.5);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 105;
+    backdrop-filter: blur(2px);
 }
 .nav-overlay.active {
     opacity: 1;

@@ -7,37 +7,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <a class="skip-link" href="#home">Skip to content</a>
-    <!-- Navigation Bar -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Announcement Bar -->
+    <div id="announcementBar" class="announcement-bar" role="status" aria-live="polite">
+        <span id="announcementText">Welcome to CAC Miracle Centres Zonal Headquarters! Join us for Sunday Celebration Service at 08:00 AM.</span>
+        <button id="closeAnnouncement" aria-label="Close announcement">&times;</button>
+    </div>
     <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <div class="logo-icon">🏢</div>
-                    <div class="logo-text">
-                        <h1>BLESSING ALUMINUM CO. LTD</h1>
-                        <p>All about Building</p>
-                    </div>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
-                    <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true" focusable="false">
-                        <rect class="line line1" x="0" y="0" width="26" height="2" rx="1" fill="currentColor"></rect>
-                        <rect class="line line2" x="0" y="8" width="26" height="2" rx="1" fill="currentColor"></rect>
-                        <rect class="line line3" x="0" y="16" width="26" height="2" rx="1" fill="currentColor"></rect>
-                    </svg>
-                </button>
-                <div id="navOverlay" class="nav-overlay" tabindex="-1" aria-hidden="true"></div>
-                <button class="quote-btn">Get Quote</button>
+        <div class="nav-content">
+            <div class="logo">
+                <img src="./assets/logo.png" alt="CAC Miracle Centres Logo" style="height: 58px; width: auto; vertical-align: middle; margin-right: 0.5rem;">
+                CAC Miracle Centres Zonal Headquarters
             </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <!-- <li><a href="events.html">Events</a></li> -->
+                <li><a href="sermons.html">Sermons</a></li>
+                <!-- <li><a href="community.html">Community</a></li> -->
+                <li><a href="giving.html">Giving</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburgerBtn" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+                <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true" focusable="false">
+                    <rect class="line line1" x="0" y="0" width="26" height="2" rx="1" fill="currentColor"></rect>
+                    <rect class="line line2" x="0" y="8" width="26" height="2" rx="1" fill="currentColor"></rect>
+                    <rect class="line line3" x="0" y="16" width="26" height="2" rx="1" fill="currentColor"></rect>
+                </svg>
+            </button>
+            <div id="navOverlay" class="nav-overlay" tabindex="-1" aria-hidden="true"></div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
@@ -284,7 +285,7 @@
                         </div>
                     </div>
                     <div class="footer-right">
-                       g -->
+                        <!-- <p class="footer-copyright">© 2025 Blessing Aluminum Co. Ltd. All rights reserved.</p> -->
                         <p class="footer-copyright">© 2025 V&G Webwork. All rights reserved.</p>
                         <p class="footer-director">Managing Director: Fatoye George</p>
                     </div>
